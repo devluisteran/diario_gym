@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tu Nombre | Full Stack Developer</title>
+    <title>Luis Teran | Full Stack Developer</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome (iconos) -->
@@ -15,7 +15,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">TuNombre</a>
+            <a class="navbar-brand" href="#">LuisTeran</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -36,13 +36,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
-                    <h1>Hola, soy <span class="text-primary">Tu Nombre</span></h1>
+                    <h1>Hola, soy <span class="text-primary">Luis Teran</span></h1>
                     <h2>Full Stack Developer</h2>
-                    <p class="lead">Especializado en Backend con Node.js, Python y bases de datos.</p>
+                    <p class="lead">Especializado en Backend con Laravel php, Node.js y bases de datos.</p>
                     <a href="#proyectos" class="btn btn-primary btn-lg">Ver mis proyectos</a>
                 </div>
-                <div class="col-lg-6">
-                    <img src="https://via.placeholder.com/400" alt="Tu foto" class="img-fluid rounded-circle">
+                <!-- Sobre mí -->
+                <div class="col-lg-6 text-center sm-mt-2"> <!-- Añadí text-center -->
+                    <img src="profile2.jpeg" width="70%" alt="Sobre mí" class="img-fluid rounded mi-foto">
                 </div>
             </div>
         </div>
@@ -58,7 +59,7 @@
                         <div class="card-body">
                             <i class="fas fa-server fa-3x mb-3 text-primary"></i>
                             <h3>Backend</h3>
-                            <p>Node.js, Python (Django/Flask), Java, APIs REST, GraphQL.</p>
+                            <p>Laravel, PHP, Node.js(básico), Express, APIs REST.</p>
                         </div>
                     </div>
                 </div>
@@ -67,7 +68,7 @@
                         <div class="card-body">
                             <i class="fas fa-database fa-3x mb-3 text-primary"></i>
                             <h3>Bases de Datos</h3>
-                            <p>MySQL, PostgreSQL, MongoDB, Firebase.</p>
+                            <p>MySQL, PostgreSQL, MongoDB(básico), Firebase.</p>
                         </div>
                     </div>
                 </div>
@@ -76,7 +77,7 @@
                         <div class="card-body">
                             <i class="fas fa-code fa-3x mb-3 text-primary"></i>
                             <h3>Frontend</h3>
-                            <p>HTML, CSS, JavaScript, Bootstrap, React (básico).</p>
+                            <p>HTML, CSS, JavaScript, Bootstrap, tailwind,Vue 2 y 3(básico), React (básico).</p>
                         </div>
                     </div>
                 </div>
@@ -92,21 +93,24 @@
                 <!-- Proyecto 1 -->
                 <div class="col-md-4 mb-4">
                     <div class="card h-100">
-                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Proyecto 1">
-                        <div class="card-body">
-                            <h5 class="card-title">API RESTful</h5>
-                            <p class="card-text">API desarrollada con Node.js y Express para gestión de usuarios.</p>
-                            <a href="#" class="btn btn-primary">Ver código (GitHub)</a>
+                        <div class="card-body" style="text-align: center;">
+                            <i class="fas fa-server fa-3x mb-3 text-primary"></i>
+                            <h5 class="card-title" style="text-align: justify;">Backend App Movil Gym-App</h5>
+                            <p class="card-text" style="text-align: justify;">APIS desarrolladas con PHP para todo el manejo de logica, PostgreSQL
+                                 para el manejo de información y lcobucci para el manejo de tokens .</p>
+                            <a href="https://github.com/devluisteran/diario_gym.git" class="btn btn-primary">Ver código (GitHub)</a>
                         </div>
                     </div>
                 </div>
                 <!-- Proyecto 2 -->
                 <div class="col-md-4 mb-4">
                     <div class="card h-100">
-                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Proyecto 2">
+                        <img src="gym.png" class="card-img-top" alt="Gym-App">
+
                         <div class="card-body">
-                            <h5 class="card-title">E-commerce</h5>
-                            <p class="card-text">Plataforma con Django y PostgreSQL.</p>
+                            <h5 class="card-title">App Movil Diary-Gym-App</h5>
+                            <p class="card-text">App hecha en Flutter con ayuda de IA deepseek y copilot
+                                 para el diseño de interfaces.</p>
                             <a href="#" class="btn btn-primary">Ver demo</a>
                         </div>
                     </div>
@@ -114,11 +118,11 @@
                 <!-- Proyecto 3 -->
                 <div class="col-md-4 mb-4">
                     <div class="card h-100">
-                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Proyecto 3">
-                        <div class="card-body">
-                            <h5 class="card-title">Chat en Tiempo Real</h5>
-                            <p class="card-text">WebSocket con Socket.io y React.</p>
-                            <a href="#" class="btn btn-primary">Ver detalles</a>
+                        <div class="card-body" style="text-align: center;">
+                            <i class="fas fa-code fa-3x mb-3 text-primary"></i>
+                            <h5 class="card-title">Portafolio</h5>
+                            <p class="card-text" style="text-align: justify;">Interfaz realizada con Html, Js y Css</p>
+                            <a href="https://diario-gym.onrender.com/" class="btn btn-primary">Ver detalles</a>
                         </div>
                     </div>
                 </div>
@@ -131,12 +135,13 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
-                    <img src="https://via.placeholder.com/400" alt="Sobre mí" class="img-fluid rounded">
+                    <img src="sobre_mi.png" alt="Sobre mí" class="img-fluid rounded">
                 </div>
                 <div class="col-lg-6">
                     <h2>Sobre Mí</h2>
-                    <p>Desarrollador Full Stack con 3+ años de experiencia, enfocado en soluciones robustas en el backend. Me apasiona la arquitectura de software y las bases de datos.</p>
-                    <p>Cuando no estoy programando, me gusta aprender nuevas tecnologías o contribuir a proyectos open-source.</p>
+                    <p>Desarrollador Full Stack con 2+ años de experiencia, he trabajado en optimización de sistemas,
+                        desarrollo de modulos de facturación y soluciones personalizadas, intregraciones con proveedores de timbrado y plataformas de pago.</p>
+                    <p>Cuando no estoy programando, me gusta aprender nuevas tecnologías.</p>
                 </div>
             </div>
         </div>
@@ -146,26 +151,11 @@
     <section id="contacto" class="py-5">
         <div class="container">
             <h2 class="text-center mb-5">Contacto</h2>
-            <div class="row">
-                <div class="col-md-6 mx-auto">
-                    <form>
-                        <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Nombre" required>
-                        </div>
-                        <div class="mb-3">
-                            <input type="email" class="form-control" placeholder="Email" required>
-                        </div>
-                        <div class="mb-3">
-                            <textarea class="form-control" rows="5" placeholder="Mensaje" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary w-100">Enviar</button>
-                    </form>
-                </div>
-            </div>
+            
             <div class="text-center mt-5">
-                <a href="https://github.com/tuusuario" class="mx-2"><i class="fab fa-github fa-2x"></i></a>
-                <a href="https://linkedin.com/in/tuusuario" class="mx-2"><i class="fab fa-linkedin fa-2x"></i></a>
-                <a href="mailto:tuemail@example.com" class="mx-2"><i class="fas fa-envelope fa-2x"></i></a>
+                <a href="https://github.com/devluisteran" class="mx-2"><i class="fab fa-github fa-2x"></i></a>
+                <a href="https://linkedin.com/in/luis-fernando-teran-112287241/" class="mx-2"><i class="fab fa-linkedin fa-2x"></i></a>
+                <a href="mailto:devluisteran@gmail.com" class="mx-2"><i class="fas fa-envelope fa-2x"></i></a>
             </div>
         </div>
     </section>
@@ -173,7 +163,7 @@
     <!-- Footer -->
     <footer class="py-4 bg-dark text-white text-center">
         <div class="container">
-            <p>&copy; 2023 Tu Nombre. Todos los derechos reservados.</p>
+            <p>&copy; <?php echo date('Y'); ?> Luis Teran. Todos los derechos reservados.</p>
         </div>
     </footer>
 

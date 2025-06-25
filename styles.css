@@ -40,3 +40,14 @@ section {
 .fas, .fab {
     margin-bottom: 15px;
 }
+
+
+.mi-foto {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Sombra sutil */
+    border: 3px solid #0d6efd; /* Borde azul */
+}
+
+.mi-foto:hover {
+    transform: scale(1.05); /* Ligero zoom al pasar el mouse */
+    transition: transform 0.3s;
+}
