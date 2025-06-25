@@ -1,6 +1,9 @@
 # Imagen base oficial de PHP con Apache
 FROM php:8.2-apache
 
+RUN apt-get update && apt-get install -y \
+    libpq-dev \
+    && docker-php-ext-install pdo pdo_pgsql
 # Activar mod_rewrite (opcional si usas rutas limpias)
 RUN a2enmod rewrite
 
