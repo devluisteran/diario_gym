@@ -9,13 +9,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     exit();
 }
 
-require '../config/database.php'; // Tu conexión a DB
-require __DIR__ . '/middleware/auth_middleware.php'; // Middleware de autenticación
+require '../config/database.php'; // Define $pdo
+require __DIR__ . '/middleware/auth_middleware.php'; // Devuelve user_id si el token es válido
 
-// api/get_muscle_groups.php
-$userId = authenticateRequest();
+$userId = authenticateRequest(); // Aunque no se use directamente aquí, valida el acceso
 
-$muscleGroupId = $_GET['muscle_group_id'] ?? null;
-$query = "SELECT * FROM exercises" . ($muscleGroupId ? " WHERE muscle_group_id = $muscleGroupId" : "");
-$result = mysqli_query($conn, $query);
-echo json_encode(mysqli_fetch_all($result, MYSQLI_ASSOC));
+try {
+    $muscleGroupId = $_GET['muscle_group_id'] ?? null;
+
+    if ($muscleGroupId !== null) {
+        $query = "SELECT * FROM exercises WHERE muscle_group_id = :muscle_group_id";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute(['muscle_group_id' => $muscleGroupId]);
+    } else {
+        $query = "SELECT * FROM exercises";
+        $stmt = $pdo->query($query);
+    }
+
+    $exercises = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    echo json_encode($exercises);
+
+} catch (PDOException $e) {
+    http_response_code(500);
+    echo json_encode([
+        'error' => 'Error al obtener los ejercicios',
+        'detalle' => $e->getMessage()
+    ]);
+}

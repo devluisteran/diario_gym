@@ -9,25 +9,41 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     exit();
 }
 
-require '../config/database.php'; // Tu conexión a DB
-require __DIR__ . '/middleware/auth_middleware.php'; // Middleware de autenticación
+require '../config/database.php'; // Define $pdo
+require __DIR__ . '/middleware/auth_middleware.php'; // Autenticación JWT
 
-// api/get_muscle_groups.php
 $userId = authenticateRequest();
 
 $data = json_decode(file_get_contents("php://input"), true);
 
-$query = "INSERT INTO muscle_groups (name,user_id) 
-          VALUES (?,?)";
-
-$stmt = mysqli_prepare($conn, $query);
-
-mysqli_stmt_bind_param($stmt, "si", 
-  $data['name'], 
-  $userId);
-mysqli_stmt_execute($stmt);
-if (mysqli_stmt_error($stmt)) {
-    echo json_encode(['success' => false, 'error' => mysqli_stmt_error($stmt)]);
+// Validación básica
+if (empty($data['name'])) {
+    http_response_code(400);
+    echo json_encode(['error' => 'El campo name es requerido']);
     exit;
 }
-echo json_encode(['success' => true,"id" => mysqli_insert_id($conn)]);
+
+try {
+    $query = "INSERT INTO muscle_groups (name, user_id) VALUES (:name, :user_id)";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute([
+        'name' => $data['name'],
+        'user_id' => $userId
+    ]);
+
+    // Obtener el ID insertado (solo si la tabla tiene SERIAL/IDENTITY)
+    $newId = $pdo->lastInsertId();
+
+    echo json_encode([
+        'success' => true,
+        'id' => $newId
+    ]);
+
+} catch (PDOException $e) {
+    http_response_code(500);
+    echo json_encode([
+        'success' => false,
+        'error' => 'Error al insertar grupo muscular',
+        'detalle' => $e->getMessage()
+    ]);
+}

@@ -9,31 +9,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     exit();
 }
 
-require '../config/database.php'; // Tu conexión a DB
-require __DIR__ . '/middleware/auth_middleware.php'; // Middleware de autenticación
+require '../config/database.php'; // Define $pdo
+require __DIR__ . '/middleware/auth_middleware.php'; // Valida el token y devuelve user_id
 
-// api/get_muscle_groups.php
+// Obtener el ID del usuario autenticado
 $userId = authenticateRequest();
-$id = mysqli_real_escape_string($conn, $userId);
-if (!$id) {
+if (!$userId) {
     http_response_code(401);
     echo json_encode(['error' => 'Unauthorized']);
-    exit();
-}
-
-$query = "SELECT workout_sessions.*,exercises.name as exercise FROM workout_sessions
-LEFT JOIN exercises on workout_sessions.exercise_id = exercises.id
-WHERE workout_sessions.user_id = ? and (workout_sessions.status is null or workout_sessions.status <> 2) ORDER BY date desc;";
-
-$stmt = mysqli_prepare($conn, $query);
-mysqli_stmt_bind_param($stmt, "i", $id);
-mysqli_stmt_execute($stmt);
-$result = mysqli_stmt_get_result($stmt);
-
-if (!$result) {
-    http_response_code(500);
-    echo json_encode(['error' => 'Error en la consulta a la base de datos']);
     exit;
 }
 
-echo json_encode(mysqli_fetch_all($result, MYSQLI_ASSOC));
+try {
+    $query = "
+        SELECT 
+            workout_sessions.*, 
+            exercises.name AS exercise 
+        FROM workout_sessions
+        LEFT JOIN exercises ON workout_sessions.exercise_id = exercises.id
+        WHERE workout_sessions.user_id = :user_id
+          AND (workout_sessions.status IS NULL OR workout_sessions.status <> 2)
+        ORDER BY workout_sessions.date DESC
+    ";
+
+    $stmt = $pdo->prepare($query);
+    $stmt->execute(['user_id' => $userId]);
+    $sessions = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    echo json_encode($sessions);
+
+} catch (PDOException $e) {
+    http_response_code(500);
+    echo json_encode([
+        'error' => 'Error en la consulta a la base de datos',
+        'detalle' => $e->getMessage()
+    ]);
+}

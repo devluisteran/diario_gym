@@ -9,25 +9,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     exit();
 }
 
-require '../config/database.php'; // Tu conexión a DB
-require __DIR__ . '/middleware/auth_middleware.php'; // Middleware de autenticación
+require '../config/database.php'; // Define $pdo
+require __DIR__ . '/middleware/auth_middleware.php'; // Devuelve $userId desde JWT
 
-// api/get_muscle_groups.php
 $userId = authenticateRequest();
 if (!$userId) {
     http_response_code(401);
     echo json_encode(['error' => 'Unauthorized']);
     exit();
 }
-$id = mysqli_real_escape_string($conn, $userId);
-$query = "SELECT * FROM muscle_groups WHERE user_id = ?";
-$stmt = mysqli_prepare($conn, $query);
-mysqli_stmt_bind_param($stmt, "s", $id);
-mysqli_stmt_execute($stmt);
-$result = mysqli_stmt_get_result($stmt);
-if (!$result) {
+
+try {
+    $query = "SELECT * FROM muscle_groups WHERE user_id = :user_id";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute(['user_id' => $userId]);
+    $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    echo json_encode($groups);
+
+} catch (PDOException $e) {
     http_response_code(500);
-    echo json_encode(['error' => 'Error en la consulta a la base de datos']);
-    exit;
+    echo json_encode([
+        'error' => 'Error en la consulta a la base de datos',
+        'detalle' => $e->getMessage()
+    ]);
 }
-echo json_encode(mysqli_fetch_all($result, MYSQLI_ASSOC));
