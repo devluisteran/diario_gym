@@ -36,7 +36,7 @@ try {
     exit;
 }
 
-echo json_encode([
-    "message" => "Conexión exitosa a la base de datos",
-    "status" => "success"
-]);
+// echo json_encode([
+//     "message" => "Conexión exitosa a la base de datos",
+//     "status" => "success"
+// ]);
