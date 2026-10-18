@@ -39,7 +39,7 @@
                     <h1>Hola, soy <span class="text-primary">Luis Teran</span></h1>
                     <h2>Full Stack Developer</h2>
                     <p class="lead">Especializado en Backend con Laravel php, Node.js y bases de datos.</p>
-                    <a href="#proyectos" class="btn btn-primary btn-lg">Ver mis proyectos</a>
+                    <a href="#proyectos" class="btn btn-primary btn-lg mb-4">Ver mis proyectos</a>
                 </div>
                 <!-- Sobre mí -->
                 <div class="col-lg-6 text-center sm-mt-2"> <!-- Añadí text-center -->
@@ -59,7 +59,7 @@
                         <div class="card-body">
                             <i class="fas fa-server fa-3x mb-3 text-primary"></i>
                             <h3>Backend</h3>
-                            <p>Laravel, PHP, Node.js(básico), Express, APIs REST.</p>
+                            <p>Laravel, PHP, Node.js, Express, APIs REST, TypeScript.</p>
                         </div>
                     </div>
                 </div>
@@ -77,7 +77,7 @@
                         <div class="card-body">
                             <i class="fas fa-code fa-3x mb-3 text-primary"></i>
                             <h3>Frontend</h3>
-                            <p>HTML, CSS, JavaScript, Bootstrap, tailwind,Vue 2 y 3(básico), React (básico).</p>
+                            <p>HTML, CSS, JavaScript, Bootstrap, tailwind,Vue 2 y 3(básico), React, TypeScript.</p>
                         </div>
                     </div>
                 </div>
@@ -90,6 +90,20 @@
         <div class="container">
             <h2 class="text-center mb-5">Mis Proyectos</h2>
             <div class="row">
+                <!-- Proyecto 1 -->
+                 <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img src="logo_uies.png" class="card-img-top" alt="Gym-App">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Biblioteca Virtual</h5>
+                            <p class="card-text">Sistema de gestión de libros y alumnos, tecnologías utlizadas: 
+                                Frontend React+TS, Backend Node.js+Express+TS, Base de datos MySQL,
+                                Gestión de correos electrónicos Resend Emails.</p>
+                            <a href="https://universidad-amado-nervo.com/" class="btn btn-primary">Ver proyecto</a>
+                        </div>
+                    </div>
+                </div>
                 <!-- Proyecto 1 -->
                 <div class="col-md-4 mb-4">
                     <div class="card h-100">
