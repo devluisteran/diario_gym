@@ -93,7 +93,7 @@
                 <!-- Proyecto 1 -->
                  <div class="col-md-4 mb-4">
                     <div class="card h-100">
-                        <img src="logo_uies.png" class="card-img-top" alt="Gym-App">
+                        <img src="logo_uies.png" class="card-img-top" alt="logo_uies">
 
                         <div class="card-body">
                             <h5 class="card-title">Biblioteca Virtual</h5>
