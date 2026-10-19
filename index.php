@@ -153,7 +153,7 @@
                 </div>
                 <div class="col-lg-6">
                     <h2>Sobre Mí</h2>
-                    <p>Desarrollador Full Stack con 2+ años de experiencia, he trabajado en optimización de sistemas,
+                    <p>Desarrollador Full Stack con 3+ años de experiencia, he trabajado en optimización de sistemas,
                         desarrollo de modulos de facturación y soluciones personalizadas, intregraciones con proveedores de timbrado y plataformas de pago.</p>
                     <p>Cuando no estoy programando, me gusta aprender nuevas tecnologías.</p>
                 </div>
