@@ -33,7 +33,7 @@ Después del registro, realiza el login para autenticarte y usar el resto de los
 🔁 Respuesta exitosa:
 {
   "status": "success",
-  "token": "abc123..." // agregar el token a tu heder
+  "token": "abc123..." 
 }
 
 ⚙️ Tecnologías utilizadas
